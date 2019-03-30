@@ -15,16 +15,16 @@
                 <h1>Add a new contact</h1>
                 <div>
                     <label>
-                       <input type="text" name="person" id="fname" placeholder="John" required pattern="[A-Za-z]+" />
+                       <input type="text" name="firstname" id="fname" placeholder="Tony" required pattern="[A-Za-z]+" maxlength="15"/>
                     </label>
                     <label>
-                            <input type="text" name="person" id="lname" placeholder="Smith" required pattern="[A-Za-z]+" />
+                            <input type="text" name="lastname" id="lname" placeholder="Stark" required pattern="[A-Za-z]+" maxlength="15" />
                         </label>
                     <label>
-                        <input type="text" name="phone" id="number" placeholder="1234567" required pattern="[0-9]{10}" />
+                        <input type="text" name="phone" id="number" placeholder="9008007005" required pattern="[0-9]{10}" maxlength="10" minlength="10" />
                     </label>
                     <label>
-                        <input type="text" name="email" id="email" placeholder="john@example.com"  />
+                        <input type="email" name="email" id="email" placeholder="ironman@mcu.com" required>
                     </label>
                 </div>
                 <div>
@@ -45,7 +45,7 @@
                 
             </div>
         
-            
+            <table></table>
             <div id="show-details" class="show-details"></div>
             <!-- <div id="msg">
                 <pre></pre>

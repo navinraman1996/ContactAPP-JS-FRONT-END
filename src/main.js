@@ -1,7 +1,7 @@
 import './../scss/main.scss';
+import { RSA_X931_PADDING } from 'constants';
+let Rx = require('rxjs');
 
-//let contacts = [];
-// import React from 'react';
 // example {id:1592304983049, title: 'Deadpool', year: 2015}
 const addcontact = (ev)=>{
     ev.preventDefault();  //to stop the form submitting
@@ -24,7 +24,8 @@ const addcontact = (ev)=>{
     fetch("http://localhost:3000/addressBook/",{
   method: "POST",
   headers:{
-   'Content-Type':'application/json'
+   'Content-Type':'application/json',
+   mode: 'cors'
   },
   body: JSON.stringify(contact)
 })
@@ -37,64 +38,83 @@ const addcontact = (ev)=>{
 document.addEventListener('DOMContentLoaded', ()=>{
     document.getElementById('submit-btn').addEventListener('click', addcontact);
 });
+function populateTable(contactlist){
+  for( let i=0;i<contactlist.length; i++){
+  const contact = (contactlist[i]);
+  const name = contact.fname + " " +contact.lname;
+  const contactId = contact._id;
+  addRow(table, name, contactId, i);
+  }
+}
+
+
+let table = document.querySelector('table');
+function addRow(table, name, id, position) {
+  const row = table.insertRow(position);
+  const cell1 = row.insertCell(0);
+  const cell2 = row.insertCell(1);  
+  cell1.innerHTML=name;
+  let button = document.createElement('button');
+  button.classList.add('viewbutton');
+  button.innerHTML="view"
+  cell2.appendChild(button);
+  cell2.setAttribute("name", id);
+  const view$ = Rx.fromEvent(button,'click');
+let id1 = button.parentElement.getAttribute('name');
+  view$.subscribe(() =>{fetchcontact(id1)});
+}
+
+function fetchcontact(id){
+  //console.log(id);
+  // contactcard.classList.toggle("hidden");
+  fetch('http://localhost:3000/addressBook/' +`${id}`, {
+    method: 'GET',
+    headers: {
+    "Content-Type": "application/json",
+    mode: 'cors'
+  }, })
+  .then(response => {response.json()
+  console.log(JSON.stringify(response))})
+  .catch(error => console.error('Error:', error))
+    // console.log(typeof newContact);
+//     console.log(newContact);
+// })
+}
 
 
 
-// const root = "https://jsonplaceholder.typicode.com/users";
-// fetch(root)
-//   .then(function(response){
-//     response.json();
-//   })
-//   .then((jsonData)=>{
-//     console.log(jsonData);
-//   })
-//   .catch((err)=>{
-//     console.log('Error:',err.message);
-//   });
-
-
-
-const showcontact = (ev)=>{
-    ev.preventDefault();
+  let contactlist = [];
     let req  = new Request(`http://localhost:3000/addressBook`,{
     method : 'GET',
     headers: {
            'Content-Type':'application/json'
           },
-    mode: 'cors'
+          mode: 'cors'
 });
 fetch(req)
-  .then(function (response) {
-    return response.json()
+.then(response => response.json())
+  .catch(error => console.error('Error:', error))
+  .then(response =>   {
+    contactlist=response;
+    populateTable(contactlist);
+    console.log(contactlist);
   })
-  .then(function (data) {
-    console.log('the data', data);
-    let result = ``;
-    let details = ``;
-            data.forEach((user) => {
-                const { _id, fname,lname, email, number} = user;
-                result +=
-                    `<div>
-                        <button id = "dispcont"> ${fname} ${lname}</button>
-                      </div>
-                     `;
-                details +=`
-                <div id ="wrapper-ct">
-                     <h5> Contact ID: ${_id} </h5>
-                         <ul class="w3-ul">
-                             <li> First Name : ${fname}</li>
-                             <li> Last Name : ${lname}</li>
-                             <li> Email : ${email} </li>
-                             <li> Phone Number : ${number} </li>
-                         </ul>
-                    </div>
-                `;
-                document.getElementById("result").innerHTML = details;
-                    })
-                    
-                }).catch((err)=>{
-                    console.log('Error:',err.message);
-                  });
+  // .then(function (response) {
+  //   return response.json()
+  // })
+  // .then(function (data) {
+  //   console.log('the data', data);
+  //   contactlist = data;
+  //   populateTable(contactlist);
+  // })
+  // .catch((err)=>{
+  //   console.log('Error:',err.message);
+  // })
+
+  
+
+  
+                
                   //document.getElementById('result').innerHTML = details;
 
 // fetch('https://jsonplaceholder.typicode.com/users')
@@ -116,13 +136,3 @@ fetch(req)
 //                     });
 //                 })
 // }
-                }
-document.getElementById('getData').addEventListener('click', showcontact);
-
-
-   var button = document.querySelector('button');
-
-   Rx.Observable.fromEvent(button, 'click')
-       .subscribe(
-         (value) => console.log(value.clientX)
-     );
