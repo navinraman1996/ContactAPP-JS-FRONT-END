@@ -1,0 +1,59 @@
+<!--The <!DOCTYPE> declaration is not an HTML tag; it is an instruction to the web browser about what version of HTML the page is written in. -->
+<!doctype html>
+<!-- <p>The html element represents the root of an HTML document.</p> -->
+<html>
+    <!-- The head element represents a collection of metadata for the Document.</p> -->
+    <head>
+        <!-- The title element represents the document's title or name. </p> -->
+        <title>SCSS Webpack Demo App</title>
+    </head>
+    <!--The body element represents the content of the document. -->
+    <body>
+           
+        <div id="contact-panel" class="panel">
+            <form id="contact" action="#">
+                <h1>Add a new contact</h1>
+                <div>
+                    <label>
+                       <input type="text" name="person" id="fname" placeholder="John" required pattern="[A-Za-z]+" />
+                    </label>
+                    <label>
+                            <input type="text" name="person" id="lname" placeholder="Smith" required pattern="[A-Za-z]+" />
+                        </label>
+                    <label>
+                        <input type="text" name="phone" id="number" placeholder="1234567" required pattern="[0-9]{10}" />
+                    </label>
+                    <label>
+                        <input type="text" name="email" id="email" placeholder="john@example.com"  />
+                    </label>
+                </div>
+                <div>
+                    <input id = "submit-btn" type="submit" value="Submit" />
+                    
+                </div>
+            </form>
+        
+            <div id="show-contacts" class="show-contacts">
+                <h1>Show contacts</h1>
+                <div >
+                    <button id="getData">GET DATA FROM API </button>
+                    <button id="button">GET DATA FROM API </button>
+                    <p id="buttons"><p id="result"></p></p>
+                        
+                        
+                </div>
+                
+            </div>
+        
+            
+            <div id="show-details" class="show-details"></div>
+            <!-- <div id="msg">
+                <pre></pre>
+            </div> -->
+        </div>
+        <div id = "show-panel" class="panel">
+            
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
