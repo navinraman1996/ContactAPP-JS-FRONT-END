@@ -1,47 +1,94 @@
-
+// header
 h1{
-    font-size:1.2em;
-    text-align:center;
-  }
+  font-size:1.2em;
+  text-align:center;
+}
+
+// for panel bg
+.panel{
+  background:rgb(250,250,250);
+  padding:1em;
+  width:92.5%;
+  height: 233px;
+  margin:auto;
+  max-width:54em;
+}
+
+//for input fields
+input{
+  width:100%;
+  box-sizing:border-box;
+  margin-top:0.5em;
+  padding:0.5em;
+  border-radius: 10px;
+
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  border: none;
+}
+
+//input whne focused
+input:focus{
+  outline:none;
+  border-color: aquamarine; 
+}
+
+//input after
+input::after{
+  width:100%;
+  height:10px;
+}
+
+//input when hover
+input:hover {
+  background: linear-gradient(3deg, $start 0%,$end 100%);
+}
+
+//for displaying the contact details
+#contactTab {
+  position: absolute;
+
+  width: 482px;
+  height: 198px;
+  top: 23px;
+  left: 670px;
+
+  padding: 1em;
+  background: linear-gradient(30deg, $start 0%,$end 100%);
   
-  .panel{
-    background:rgb(250,250,250);
-    padding:1em;
-    width:92.5%;
-    margin:auto;
-    max-width:54em;
-  }
-  
-  input{
-    width:100%;
-    box-sizing:border-box;
-    font-size:1em;
-    margin-top:0.5em;
-    padding:0.5em;
-  }
-  
-  input:focus{
-    outline:none;
-  }
-  
-  input::after{
-    width:100%;
-    height:10px;
-    background:red;
-  }
-  .nav-list{
-    width:92.5%;
-    max-width:30em;
-    text-align:center;
-    margin:auto;
-    li{
-    list-style:none;
-    display:inline-block;
-      background:rgba(256,256,256,0.5);
-      padding:0.7em;
-      margin:0 0.1em;
-    }
-    li.active{
-      background-color:rgba(256,256,256,0.95);
-    }
-  }
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(255, 255, 255)
+}
+
+//for contact button
+.cntButton {
+  background: linear-gradient(30deg, $start 0%,$end 100%);
+  border-radius: 5px;
+  width: 320px;
+  border-style: none;
+
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(255, 255, 255)
+}
+
+//for adding a contact button
+#addButton {
+  background: linear-gradient(30deg, $start 0%,$end 100%);
+  border-radius: 35px;
+
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  border: none;
+  width: 320px;
+}
+
+//for the text existing contact
+#existContact {
+  font-size: 30px;
+  color: rgba(113, 209, 153, 0.815);
+}

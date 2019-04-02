@@ -5,14 +5,30 @@
     <!-- The head element represents a collection of metadata for the Document.</p> -->
     <head>
         <!-- The title element represents the document's title or name. </p> -->
-        <title>SCSS Webpack Demo App</title>
+        <title>SCSS Webpack Contact App</title>
     </head>
     <!--The body element represents the content of the document. -->
     <body>
             <!-- for control panel -->
         <div id="contact-panel" class="panel">
-            <form id="contact" action="#">
-                <h1>Add a new contact</h1>
+            
+            <!-- contacts tab -->
+            <div id="show-contacts" class="show-contacts">
+                <span id="existContact">Existing Contacts</span>
+            </div>
+        
+            <div id="contactTab">Contact Detatils</div>
+
+            <!-- table for clisting all existing contacts -->
+            <table></table>
+            
+            <div id="show-details" class="show-details"></div><br>
+
+            <!-- adding button for adding a contact to the database -->
+            <button id = "addButton">Add a contact</button>
+            
+            <!-- form for adding a contact and action # is given so that the contact will be submitted to the same page -->
+            <form id="contact" action="#">    
                 <div>
                     <!-- form fields -->
                     <label>
@@ -22,37 +38,21 @@
                             <input type="text" name="lastname" id="lname" placeholder="Stark" required pattern="[A-Za-z]+" maxlength="15" />
                         </label>
                     <label>
-                        <input type="text" name="phone" id="number" placeholder="9008007005" required pattern="[0-9]{10}" maxlength="10" minlength="10" />
+                        <input type="text" name="phone" id="number" placeholder="9008007005" required pattern="[0-9]{10}" maxlength="10" minlength="10"/>
                     </label>
                     <label>
                         <input type="email" name="email" id="email" placeholder="ironman@mcu.com" required>
                     </label>
                 </div>
                 <div>
-                    <input id = "submit-btn" type="submit" value="Submit" />
-                    
+                    <input id = "submit-btn" type="submit" value="Add Contact"/>
                 </div>
             </form>
-            <!-- contacts tab -->
-            <div id="show-contacts" class="show-contacts">
-                <h1>Show contacts</h1>
-                <div >
-                    <!-- button for getting the data -->
-                    <button id="getData">GET DATA FROM API </button>
-                    <!-- <button id="button">GET DATA FROM API </button> -->
-                    <p id="buttons"><p id="result"></p></p>  
-                </div>
-            </div>
-        
-            <table></table>
-            <div id="show-details" class="show-details"></div>
-            <!-- <div id="msg">
-                <pre></pre>
-            </div> -->
         </div>
         <div id = "show-panel" class="panel">
-            
         </div>
-        <script src="main.js"></script>
+
+        <!-- calling the script file -->
+        <script type="text/javascript" src="src/main.js"></script>
     </body>
 </html>
